@@ -1,0 +1,10 @@
+<mat-card *ngFor="let post of posts" class="mt-5">
+  <mat-card-title class="mb-0">{{post.title}}</mat-card-title>
+  <hr class="mt-0">
+  <mat-card-subtitle>
+    {{post.poster}}
+  </mat-card-subtitle>
+  <mat-card-content>
+    {{post.body}}
+  </mat-card-content>
+</mat-card>

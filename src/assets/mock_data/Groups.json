@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "10001",
+    "name": "Family Reunion",
+    "desc": "For members of the Doe Bloodline",
+    "members": [
+      "10001",
+      "10003"
+    ]
+  },
+  {
+    "_id": "10002",
+    "name": "Meme Sharing",
+    "desc": "Lorem Ipsum Dolor Sit Amet",
+    "members": [
+      "10002"
+    ]
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "_id": "10001",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "email1@email.com",
+    "hash": "",
+    "groups": [
+      {
+        "groupID": "10001",
+        "categoryID": "1"
+      }
+    ],
+    "categories": [
+      {
+        "categoryID": "1",
+        "name": "Family"
+      }
+    ]
+  },
+  {
+    "_id": "10002",
+    "first_name": "Jonathon",
+    "last_name": "Joestar",
+    "email": "email2@email.com",
+    "hash": "",
+    "groups": [
+      {
+        "groupID": "10002",
+        "categoryID": "1"
+      }
+    ],
+    "categories": [
+      {
+        "categoryID": "1",
+        "name": "Memes"
+      }
+    ]
+  },
+  {
+    "_id": "10001",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "email3@email.com",
+    "hash": "",
+    "groups": [
+      {
+        "groupID": "10001",
+        "categoryID": "1"
+      }
+    ],
+    "categories": [
+      {
+        "categoryID": "1",
+        "name": "Familia"
+      }
+    ]
+  }
+]

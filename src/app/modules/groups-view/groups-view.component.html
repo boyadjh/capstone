@@ -1,0 +1,8 @@
+<div>
+  <h2 class="ml-3 mt-1">Groups</h2>
+  <hr class="m-0">
+  <mat-nav-list class="m-3 p-0 group-list">
+    <a [routerLink]="['/group/'+group._id]" mat-list-item *ngFor="let group of groups"
+                      class="border">{{group.name}}</a>
+  </mat-nav-list>
+</div>
