@@ -1,7 +1,7 @@
 export interface Profile {
   _id: string;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   hash: string;
   groups: any[];

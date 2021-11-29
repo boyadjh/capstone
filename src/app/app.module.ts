@@ -10,10 +10,15 @@ import {NavModule} from './modules/nav/nav.module';
 import {GroupsViewModule} from './modules/groups-view/groups-view.module';
 import {GroupPageModule} from './modules/group-page/group-page.module';
 import {DashModule} from './modules/dash/dash.module';
+import {HomeComponent} from './components/home/home.component';
+import {EditorModule} from './modules/editor/editor.module';
+import {MatCardModule} from '@angular/material/card';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,10 @@ import {DashModule} from './modules/dash/dash.module';
     NavModule,
     GroupsViewModule,
     GroupPageModule,
-    DashModule
+    EditorModule,
+    DashModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

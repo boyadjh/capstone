@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../services/user.service';
+import {ProfileService} from '../../services/profile.service';
 
 @Component({
   selector: 'app-dash',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashComponent implements OnInit {
 
-  constructor() { }
+  constructor(private user: UserService,
+              private profile: ProfileService) { }
 
   ngOnInit(): void {
   }

@@ -8,7 +8,7 @@ class Controller {
     }
 
     async get(req, res) {
-        console.log(req);
+        console.log(req.originalUrl);
         return res.status(200).send(await this.service.get(req.query));
     }
 

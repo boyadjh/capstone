@@ -2,10 +2,25 @@
   <header class="container mw-100 position-fixed">
     <a routerLink="" class="nav-brand"><h1>ASOZI8</h1></a>
   </header>
-  <div class="content row col-lg-6 col-md-9 col-xs-12 m-auto pt-5 position-relative align-top">
-    <app-nav class="col flex-grow-0" style="min-width: 150px; max-width: 150px;"></app-nav>
+  <div *ngIf="loggedIn" class="content row col-lg-6 col-md-9 col-xs-12 m-auto pt-5 position-relative align-top">
+    <app-nav (logoutClicked)="loggedIn = false" class="col flex-grow-0" style="min-width: 170px; max-width: 170px;"></app-nav>
     <main class="col flex-grow-1">
       <router-outlet></router-outlet>
     </main>
+  </div>
+  <div *ngIf="!loggedIn" class="content container-fluid flex-row justify-content-center position-relative"
+        style="height:100%;width:100%;">
+    <mat-card class="col-3">
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <label for="email">email:</label>
+        <input id="email" type="text" formControlName="email">
+        <br><br>
+        <label for="password">Password:</label>
+        <input id="password" type="text" formControlName="password">
+        <br><br>
+        <button type="submit" class="btn btn-success">Log In</button>
+      </form>
+    </mat-card>
+
   </div>
 </div>
