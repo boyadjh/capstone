@@ -18,7 +18,6 @@ export class NavComponent implements OnInit {
   }
 
   logout(): void {
-    console.log('test');
     this.user.logout();
     this.route.navigate(['']);
     this.logoutClicked.emit();

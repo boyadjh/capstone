@@ -14,7 +14,8 @@ class Profile {
             },
             email: {
                 type: String,
-                required: true
+                required: true,
+                unique: true
             },
             hash: {
                 type: String,

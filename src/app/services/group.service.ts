@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {Group} from '../interfaces/Group';
-import {HttpResponse} from '../interfaces/HttpResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +17,12 @@ export class GroupService {
     const params = new HttpParams()
       .set('_id', id);
 
-    return this.http.get<HttpResponse>(this.ENDP, {params})
+    return this.http.get<any>(this.ENDP, {params})
       .pipe(map(_ => _.data[0]));
   }
 
   getGroups(): Observable<Group[]> {
-    return this.http.get<HttpResponse>(this.ENDP)
+    return this.http.get<any>(this.ENDP)
       .pipe(map(x => x.data));
   }
 }

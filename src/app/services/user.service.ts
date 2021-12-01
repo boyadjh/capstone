@@ -28,6 +28,19 @@ export class UserService {
     this.user = undefined;
   }
 
+  createAndLogin(data: Profile): Promise<boolean> {
+    return new Promise<boolean>((res, rej) => {
+      this.profile.create(data).subscribe(profile => {
+        if (profile) {
+          this.user = profile;
+          res(true);
+        } else {
+          rej('invalid login');
+        }
+      })
+    });
+  }
+
   login(email: string, password: string): Promise<boolean> {
     const p = new Promise<boolean>((res, rej) => {
       this.profile.login(email, password).subscribe(profile => {

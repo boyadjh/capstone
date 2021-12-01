@@ -13,7 +13,8 @@ import {DashModule} from './modules/dash/dash.module';
 import {HomeComponent} from './components/home/home.component';
 import {EditorModule} from './modules/editor/editor.module';
 import {MatCardModule} from '@angular/material/card';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
+import {NewGroupModule} from './modules/new-group/new-group.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     BrowserAnimationsModule,
     NavModule,
     GroupsViewModule,
+    NewGroupModule,
     GroupPageModule,
     EditorModule,
     DashModule,

@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header class="ml-0"><h4><button class="btn btn-outline-danger" (click)="back()">Back</button> New Group...</h4></mat-card-header>
+  <hr>
+  <mat-card-content>
+    <form (ngSubmit)="makeGroup()" [formGroup]="groupForm">
+      <label for="groupName">Name: </label><br>
+      <input id="groupName" type="text" formControlName="name">
+      <br><br>
+      <label for="groupDesc">Description: </label><br>
+      <input id="groupDesc" type="text" formControlName="desc">
+      <br><br>
+      <button type="submit" class="btn btn-success">Create</button>
+    </form>
+  </mat-card-content>
+</mat-card>

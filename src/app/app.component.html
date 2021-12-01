@@ -10,15 +10,34 @@
   </div>
   <div *ngIf="!loggedIn" class="content container-fluid flex-row justify-content-center position-relative"
         style="height:100%;width:100%;">
-    <mat-card class="col-3">
+    <mat-card class="col-3" *ngIf="!signup">
       <form (ngSubmit)="login()" [formGroup]="loginForm">
-        <label for="email">email:</label>
+        <label for="email">email:</label><br>
         <input id="email" type="text" formControlName="email">
         <br><br>
         <label for="password">Password:</label>
         <input id="password" type="text" formControlName="password">
         <br><br>
-        <button type="submit" class="btn btn-success">Log In</button>
+        <button type="submit" class="btn btn-success">Log In</button>&nbsp;<button class="btn btn-default"><a (click)="signup = true">Create Account</a></button>
+      </form>
+    </mat-card>
+
+    <mat-card class="col-3" *ngIf="signup">
+      <form (ngSubmit)="createAccount()" [formGroup]="signupForm">
+
+        <label for="firstname">First Name:</label>
+        <input id="firstname" type="text" formControlName="firstName">
+        <br><br>
+        <label for="lastname">Last Name:</label>
+        <input id="lastname" type="text" formControlName="lastName">
+        <br><br>
+        <label for="creationEmail">email:</label><br>
+        <input id="creationEmail" type="text" formControlName="email">
+        <br><br>
+        <label for="creationPassword">Password:</label>
+        <input id="creationPassword" type="text" formControlName="password">
+        <br><br>
+        <button type="submit" class="btn btn-success">Create Account</button>&nbsp;<button class="btn btn-danger" (click)="signup = false">Cancel</button>
       </form>
     </mat-card>
 

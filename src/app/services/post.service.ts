@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Post } from '../interfaces/Post';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {HttpResponse} from '../interfaces/HttpResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getPosts(): Observable<Post[]> {
-    return this.http.get<HttpResponse>(this.ENDP)
+    return this.http.get<any>(this.ENDP)
       .pipe(map(x => x.data));
   }
 }

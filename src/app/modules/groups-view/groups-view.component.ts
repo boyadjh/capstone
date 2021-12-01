@@ -18,5 +18,4 @@ export class GroupsViewComponent implements OnInit {
         this.groups = groups;
     });
   }
-
 }

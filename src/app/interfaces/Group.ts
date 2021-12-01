@@ -1,5 +1,5 @@
 export interface Group {
-  _id: string;
+  _id?: string;
   name: string;
   desc: string;
   members?: string[];
