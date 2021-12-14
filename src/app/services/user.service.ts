@@ -28,6 +28,10 @@ export class UserService {
     this.user = undefined;
   }
 
+  getId(): string | undefined{
+    return this.user?._id;
+  }
+
   createAndLogin(data: Profile): Promise<boolean> {
     return new Promise<boolean>((res, rej) => {
       this.profile.create(data).subscribe(profile => {

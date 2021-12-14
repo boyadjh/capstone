@@ -1,3 +1,8 @@
-<div class="white">
-<angular-editor class=""></angular-editor>
+<div class="white container-fluid pb-2">
+  <input type="text" class="w-100" style="font-size:20px;" [(ngModel)]="title">
+  <angular-editor class="" [(ngModel)]="body"></angular-editor>
+  <div class="row m-2">
+    <type-ahead class="col-10 border" [suggestions]="test" [(ngModel)]="model"></type-ahead>
+    <button class="col-2 btn btn-success" (click)="post()">POST</button>
+  </div>
 </div>

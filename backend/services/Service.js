@@ -21,7 +21,6 @@ class Service {
                 .find(query)
                 .skip(skip)
                 .limit(limit);
-            console.log(items);
             return {
                 error: false,
                 statusCode: 200,
@@ -40,6 +39,7 @@ class Service {
     }
 
     async insert(data) {
+      console.log(data);
         try {
             let item = await this.model.create(data);
             if (item)

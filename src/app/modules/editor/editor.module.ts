@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { EditorComponent } from './editor.component';
 import {AngularEditorModule} from '@kolkov/angular-editor';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {TypeaheadModule} from "ngx-type-ahead";
 
 
 
@@ -16,7 +18,9 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
   imports: [
     CommonModule,
     HttpClientModule,
-    AngularEditorModule
+    AngularEditorModule,
+    FormsModule,
+    TypeaheadModule
   ]
 })
 export class EditorModule { }

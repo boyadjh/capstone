@@ -1,7 +1,7 @@
 export interface Post {
-  _id: string;
+  _id?: string;
   poster: string;
   title: string;
   body: string;
-  groups: [string];
+  groups?: [string];
 }

@@ -44,9 +44,13 @@ export class ProfileService {
   }
 
   login(email: string, password: string): Observable<Profile> {
+    const query = {
+      email,
+      hash: password
+    };
+
     const params = new HttpParams()
-      .set('email', email)
-      .set('hash', password);
+      .set('query', JSON.stringify(query));
 
     return this.http.get<any>(this.ENDP, {params})
       .pipe(map(_ => {

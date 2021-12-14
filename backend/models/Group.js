@@ -12,7 +12,15 @@ class Group {
                 type: String,
                 required: false
             },
+            creator: {
+              type: String,
+              required: true
+            },
             members: {
+                type: [String],
+                required: true
+            },
+            admins: {
                 type: [String],
                 required: true
             }
