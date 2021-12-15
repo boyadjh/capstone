@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Post } from '../interfaces/Post';
 import {Observable} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
@@ -12,7 +12,6 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getPosts(sort?: string): Observable<Post[]> {
-
     return this.http.get<any>(this.ENDP)
       .pipe(map(x => x.data));
   }
@@ -32,5 +31,19 @@ export class PostService {
           }
         })
       );
+  }
+
+  getPostsByGroup(id: string): Observable<Post[]> {
+    const query = {
+      groups: {
+        $in: [id]
+      }
+    };
+
+    const params = new HttpParams()
+      .set('query', JSON.stringify(query));
+
+    return this.http.get<any>(this.ENDP, {params})
+      .pipe(map(x => x.data));
   }
 }
