@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {UserService} from '../../services/user.service';
-import {GroupService} from "../../services/group.service";
-import {Group} from "../../interfaces/Group";
+import {GroupService} from '../../services/group.service';
+import {Group} from '../../interfaces/Group';
 
 @Component({
   selector: 'app-editor',
