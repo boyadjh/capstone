@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import {PostService} from '../../services/post.service';
 import {Post} from '../../interfaces/Post';
@@ -8,17 +8,6 @@ import {Post} from '../../interfaces/Post';
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss']
 })
-export class PostListComponent implements OnInit {
-  posts: Post[] = [];
-  constructor(private postService: PostService) { }
-  ngOnInit(): void {
-    this.getPosts();
-  }
-  getPosts(): void {
-    this.postService.getPosts()
-      .subscribe(posts => {
-        console.log(posts);
-        this.posts = posts;
-      });
-  }
+export class PostListComponent{
+  @Input() posts: Post[] | undefined;
 }
