@@ -3,5 +3,5 @@ export interface Post {
   poster: string;
   title: string;
   body: string;
-  groups?: [string];
+  groups?: string[];
 }

@@ -11,7 +11,8 @@ export class PostService {
   private ENDP = 'http://localhost:3000/api/post';
   constructor(private http: HttpClient) { }
 
-  getPosts(): Observable<Post[]> {
+  getPosts(sort?: string): Observable<Post[]> {
+
     return this.http.get<any>(this.ENDP)
       .pipe(map(x => x.data));
   }
