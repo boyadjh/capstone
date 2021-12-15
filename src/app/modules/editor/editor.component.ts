@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {UserService} from '../../services/user.service';
+import {GroupService} from "../../services/group.service";
+import {Group} from "../../interfaces/Group";
 
 @Component({
   selector: 'app-editor',
@@ -10,22 +12,31 @@ import {UserService} from '../../services/user.service';
 export class EditorComponent implements OnInit {
   title = '';
   body = '';
-  test = ['one', 'two', 'three', 'four'];
-  model: string[] = [];
+  userGroups: Group[];
+  groups = [];
   constructor(private postService: PostService,
-              private user: UserService) { }
+              private user: UserService,
+              private groupService: GroupService) {
+    this.userGroups = [];
+  }
 
   ngOnInit(): void {
+    this.userGroups = [];
+    this.groupService.getGroups().subscribe(res => {
+      console.log(res);
+      this.userGroups = res;
+    });
   }
 
   post(): void {
-    this.postService.create({
-      title: this.title,
-      body: this.body,
-      // @ts-ignore
-      poster: this.user.getId()
-    }).subscribe(res => {
-      console.log(res);
-    });
+    console.log(this.groups);
+    // this.postService.create({
+    //   title: this.title,
+    //   body: this.body,
+    //   // @ts-ignore
+    //   poster: this.user.getId()
+    // }).subscribe(res => {
+    //   console.log(res);
+    // });
   }
 }

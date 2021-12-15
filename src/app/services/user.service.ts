@@ -66,4 +66,8 @@ export class UserService {
   getName(): string {
     return this.user?.firstName + ' ' + this.user?.lastName;
   }
+
+  getGroups() {
+
+  }
 }
