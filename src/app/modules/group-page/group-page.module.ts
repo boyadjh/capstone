@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {GroupPageComponent} from './group-page.component';
+import {PostListModule} from '../post-list/post-list.module';
+import {EditorModule} from '../editor/editor.module';
 
 
 
@@ -8,7 +10,9 @@ import {GroupPageComponent} from './group-page.component';
   declarations: [GroupPageComponent],
   exports: [GroupPageComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    PostListModule,
+    EditorModule
   ]
 })
 export class GroupPageModule { }

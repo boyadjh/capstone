@@ -1,8 +1,11 @@
 <div class="white container-fluid pb-2">
   <input type="text" class="w-100" style="font-size:20px;" [(ngModel)]="title">
   <angular-editor class="" [(ngModel)]="body"></angular-editor>
-  <div class="row m-2">
-    <type-ahead class="col-10 border" [suggestions]="userGroups"
+  <div class="row m-2 justify-content-end" *ngIf="groupId">
+    <button class="col-3 btn btn-success" (click)="post()">POST TO {{groupName}}</button>
+  </div>
+  <div class="row m-2" *ngIf="!groupId">
+    <type-ahead  class="col-10 border" [suggestions]="userGroups"
                 [(ngModel)]="groups" [multi]="true"
                 [custom]="false" [complex]="true"
                 idField="_id" nameField="name"></type-ahead>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {UserService} from '../../services/user.service';
 import {GroupService} from '../../services/group.service';
@@ -10,15 +10,17 @@ import {Group} from '../../interfaces/Group';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements OnInit {
+  @Input() groupId = '';
   title = '';
   body = '';
+  groupName = '';
   userGroups: Group[];
   groups: string[];
   constructor(private postService: PostService,
               private user: UserService,
               private groupService: GroupService) {
     this.userGroups = [];
-    this.groups = [];
+    this.groups = [this.groupId];
   }
 
   ngOnInit(): void {
@@ -26,6 +28,12 @@ export class EditorComponent implements OnInit {
     this.groupService.getGroups().subscribe(res => {
       this.userGroups = res;
     });
+    this.groupService.getGroupById(this.groupId).subscribe(res => {
+      this.groupName = res.name;
+    });
+    if (this.groupId) {
+      this.groups.push(this.groupId);
+    }
   }
 
   post(): void {
