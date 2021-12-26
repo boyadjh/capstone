@@ -33,6 +33,13 @@ export class PostService {
       );
   }
 
+  test(): void {
+    this.http.get<any>(`${this.ENDP}/test`)
+      .subscribe(res => {
+        console.log(res);
+      });
+  }
+
   getPostsByGroup(id: string): Observable<Post[]> {
     const query = {
       groups: {

@@ -1,7 +1,12 @@
 <div *ngIf="group!">
-  <h1 class="mb-0">{{group!.name}}</h1>
-  <hr>
-  <h3>{{group!.desc}}</h3>
-  <app-editor [groupId]="group._id!"></app-editor>
+  <div class="row justify-content-between ml-3 mr-3 mb-0">
+    <h1 class="">{{group!.name}}</h1>
+    <a class="" [routerLink]="['manage']"><button class="btn btn-outline-success">Manage</button></a>
+  </div>
+  <div class="mb-4">
+    <hr class="mt-0 mb-0">
+    <h5 class="ml-3 mr-3">{{group!.desc}}</h5>
+  </div>
+  <app-editor [groupId]="group._id!" (postsChange)="refresh()"></app-editor>
   <app-post-list [posts]="posts"></app-post-list>
 </div>

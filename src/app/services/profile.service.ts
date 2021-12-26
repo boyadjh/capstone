@@ -62,4 +62,15 @@ export class ProfileService {
         })
       );
   }
+
+  getProfiles(): Observable<Profile[]> {
+    return this.http.get<any>(this.ENDP)
+      .pipe(map(_ => {
+        if (!_.error) {
+          return _.data;
+        } else {
+          throw new Error('Error fetching profiles');
+        }
+      }));
+  }
 }

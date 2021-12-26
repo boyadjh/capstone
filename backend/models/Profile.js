@@ -12,6 +12,10 @@ class Profile {
                 type: String,
                 required: true
             },
+            fullName: {
+              type: String,
+              required: true
+            },
             email: {
                 type: String,
                 required: true,

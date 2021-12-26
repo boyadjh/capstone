@@ -15,6 +15,7 @@ import {EditorModule} from './modules/editor/editor.module';
 import {MatCardModule} from '@angular/material/card';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NewGroupModule} from './modules/new-group/new-group.module';
+import {GroupManageModule} from './modules/group-manage/group-manage.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {NewGroupModule} from './modules/new-group/new-group.module';
     GroupPageModule,
     EditorModule,
     DashModule,
+    GroupManageModule,
     MatCardModule,
     ReactiveFormsModule
   ],

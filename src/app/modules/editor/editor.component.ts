@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {UserService} from '../../services/user.service';
 import {GroupService} from '../../services/group.service';
@@ -11,6 +11,7 @@ import {Group} from '../../interfaces/Group';
 })
 export class EditorComponent implements OnInit {
   @Input() groupId = '';
+  @Output() postsChange = new EventEmitter();
   title = '';
   body = '';
   groupName = '';
@@ -46,6 +47,10 @@ export class EditorComponent implements OnInit {
         groups: this.groups
       }).subscribe(res => {
         console.log(res);
+        this.postsChange.emit();
+        this.title = '';
+        this.body = '';
+        this.groups = [];
       });
     }
   }

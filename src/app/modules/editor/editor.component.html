@@ -1,14 +1,17 @@
-<div class="white container-fluid pb-2">
-  <input type="text" class="w-100" style="font-size:20px;" [(ngModel)]="title">
-  <angular-editor class="" [(ngModel)]="body"></angular-editor>
-  <div class="row m-2 justify-content-end" *ngIf="groupId">
-    <button class="col-3 btn btn-success" (click)="post()">POST TO {{groupName}}</button>
+<div class="mb-5">
+  <div class="white container-fluid p-0">
+    <input type="text" class="w-100" style="font-size:20px;" [(ngModel)]="title">
+    <angular-editor class="" [(ngModel)]="body"></angular-editor>
+    <div class="row m-2" *ngIf="!groupId">
+      <type-ahead  class="col-10 border" [suggestions]="userGroups"
+                  [(ngModel)]="groups" [multi]="true"
+                  [custom]="false" [complex]="true"
+                  idField="_id" nameField="name"></type-ahead>
+      <button class="col-2 btn btn-success" (click)="post()">Post</button>
+    </div>
   </div>
-  <div class="row m-2" *ngIf="!groupId">
-    <type-ahead  class="col-10 border" [suggestions]="userGroups"
-                [(ngModel)]="groups" [multi]="true"
-                [custom]="false" [complex]="true"
-                idField="_id" nameField="name"></type-ahead>
-    <button class="col-2 btn btn-success" (click)="post()">POST</button>
+
+  <div class="row m-2 justify-content-end" *ngIf="groupId">
+    <button class="btn btn-outline-success" (click)="post()">Post To {{groupName}}</button>
   </div>
 </div>

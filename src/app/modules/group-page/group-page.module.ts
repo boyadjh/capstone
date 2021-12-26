@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {GroupPageComponent} from './group-page.component';
 import {PostListModule} from '../post-list/post-list.module';
 import {EditorModule} from '../editor/editor.module';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -12,7 +13,8 @@ import {EditorModule} from '../editor/editor.module';
   imports: [
     CommonModule,
     PostListModule,
-    EditorModule
+    EditorModule,
+    RouterModule
   ]
 })
 export class GroupPageModule { }

@@ -15,6 +15,7 @@ export class GroupService {
               private user: UserService) { }
 
   getGroupById(id: string): Observable<Group> {
+    console.log('getting group with id: ', id);
     const query = {
       _id: id
     };
@@ -24,6 +25,23 @@ export class GroupService {
 
     return this.http.get<any>(this.ENDP, {params})
       .pipe(map(_ => _.data[0]));
+  }
+
+  update(id: string, data: Group): Observable<Group> {
+    return this.http.put<any>(`${this.ENDP}/${id}`, data)
+      .pipe(
+        catchError(_ => {
+          console.log(_.error);
+          return _;
+        }),
+        map(_ => {
+          if (_.item) {
+            return _.item;
+          } else {
+            throw new Error('Problem updating Group');
+          }
+        })
+      );
   }
 
   create(data: Group): Observable<Group> {

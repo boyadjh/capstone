@@ -13,29 +13,42 @@ import {PostService} from '../../services/post.service';
 })
 export class GroupPageComponent implements OnInit {
   group: Group | undefined;
-  id: string | null;
+  id: string;
   posts: Post[];
   constructor(private groupService: GroupService,
               private postService: PostService,
               private route: ActivatedRoute,
               private router: Router,
               private location: Location) {
-    this.id = this.route.snapshot.paramMap.get('id');
+    const paramId = this.route.snapshot.paramMap.get('id');
+    if (paramId != null) {
+      this.id = paramId;
+    } else {
+      this.id = '';
+      this.location.back();
+    }
     this.posts = [];
   }
 
   ngOnInit(): void {
-    if (typeof this.id === 'string') {
-      this.groupService.getGroupById(this.id)
-        .subscribe(group => {
-          this.group = group;
+    console.log('group page init');
+    this.groupService.getGroupById(this.id)
+      .subscribe(group => {
+        this.group = group;
+    });
+    this.postService.test();
+    this.postService.getPostsByGroup(this.id)
+      .subscribe(res => {
+        console.log(res);
+        this.posts = res;
       });
-      this.postService.getPostsByGroup(this.id)
-        .subscribe(res => {
-          console.log(res);
-          this.posts = res;
-        });
-    }
   }
 
+  refresh(): void {
+    this.postService.getPostsByGroup(this.id)
+      .subscribe(res => {
+        console.log(res);
+        this.posts = res;
+      });
+  }
 }

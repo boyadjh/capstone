@@ -1,0 +1,30 @@
+<mat-card class="">
+  <div class="manage-header row ml-1 align-items-center">
+    <button class="btn btn-outline-danger ml-2" (click)="back()">Back</button>
+    <h4 class="ml-3 mb-0">{{group?.name}}</h4>
+  </div>
+  <hr class="mt-1 ml-0">
+  <mat-card-content>
+    <form (ngSubmit)="save()" [formGroup]="details">
+      <label for="groupName">Name: </label>&nbsp;
+      <input id="groupName" type="text" formControlName="groupName">
+      <br><br>
+      <label for="groupDesc">Description: </label><br>
+      <angular-editor id="groupDesc" class="" formControlName="groupDesc" [config]="descConfig"></angular-editor>
+      <br><br>
+      <label for="groupMembers">Members: </label><br>
+      <type-ahead class="col-12 border" id="groupMembers" formControlName="groupMembers"
+                  [complex]="true" [multi]="true" [suggestions]="profiles"
+                  [idField]="'_id'" [nameField]="'fullName'"></type-ahead>
+      <br><br>
+      <label for="groupAdmins">Admins: </label><br>
+      <type-ahead class="col-12 border" id="groupAdmins"
+                  formControlName="groupAdmins" [complex]="true" [multi]="true"
+                  [suggestions]="profiles" [idField]="'_id'" [nameField]="'fullName'"></type-ahead>
+      <hr class="m-0 mb-1">
+      <div class="manage-footer justify-content-end row mr-2">
+      <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
