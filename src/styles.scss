@@ -12,7 +12,94 @@
 
 html, body {
   height:100%;
+  background-color: #dde1e7;
 }
-.white {
-  background-color: #fff;
+
+* {
+  color: #071a3e;
+}
+
+.neu-card {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: -3px -3px 7px #ffffff73,
+              2px 3px 5px rgba(94, 104, 121, 0.288);
+}
+
+.neu-card-header {
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neu-card-header h3 {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.form-group {
+  display: flex;
+}
+
+.form-group .form-field:not(:last-child) {
+  margin-right: 10px;
+}
+
+.form-field {
+  margin: 10px 0;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.form-field label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  pointer-events: none;
+  color: #666;
+  transform: translateY(-50%);
+}
+//.form-field input:focus ~ label,
+.form-field input:not(:placeholder-shown) ~ label {
+  opacity: 0;
+}
+
+input.neu-input {
+  height: 100%;
+  width: 100%;
+  padding-left: 15px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  color: #111;
+  background: inherit;
+  border-radius: 25px;
+  box-shadow: inset 2px 2px 5px #babecc,
+  inset -5px -5px 10px #ffffff73;
+}
+
+input:focus {
+  outline: none;
+}
+
+.login button.neu-btn, .signup button.neu-btn {
+  margin: 15px 0 0 0;
+  height: 50px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  background: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 25px;
+  box-shadow: 2px 2px 5px #babacc,
+              -5px -5px 10px #ffffff73;
 }
