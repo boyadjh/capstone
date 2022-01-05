@@ -30,11 +30,11 @@ export class AppComponent implements OnInit{
               private router: Router) {}
 
   ngOnInit(): void {
-    // this.user.login('john@morode.com', 'password').then(res => {
-    //   this.loggedIn = this.user.isLoggedIn();
-    // }).catch(err => {
-    //   console.log(err);
-    // });
+    this.user.login('john@morode.com', 'password').then(res => {
+      this.loggedIn = this.user.isLoggedIn();
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   login(): void {

@@ -9,10 +9,13 @@
 /* Importing Angular Material CSS file. */
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+$background-color: #d0d0d9;
+$highlight-color: #eaeaea;
+$shadow-color: #a0a9a0;
 
 html, body {
   height:100%;
-  background-color: #dde1e7;
+  background-color: $background-color;
 }
 
 * {
@@ -25,13 +28,14 @@ html, body {
   flex-grow: 1;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: -3px -3px 7px #ffffff73,
-              2px 3px 5px rgba(94, 104, 121, 0.288);
+  box-shadow: -5px -5px 10px $highlight-color,
+              3px 3px 5px $shadow-color;
 }
 
 .neu-card-header {
   margin: 0 0 20px 0;
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
 }
@@ -40,6 +44,22 @@ html, body {
   font-size: 25px;
   font-weight: 600;
   margin: 0;
+}
+
+.neu-circle-img {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: -5px -5px 7px $highlight-color,
+  5px 5px 7px $shadow-color;
+}
+
+.neu-circle-img:after {
+
 }
 
 .form-group {
@@ -66,7 +86,7 @@ html, body {
   color: #666;
   transform: translateY(-50%);
 }
-//.form-field input:focus ~ label,
+
 .form-field input:not(:placeholder-shown) ~ label {
   opacity: 0;
 }
@@ -81,8 +101,8 @@ input.neu-input {
   color: #111;
   background: inherit;
   border-radius: 25px;
-  box-shadow: inset 2px 2px 5px #babecc,
-  inset -5px -5px 10px #ffffff73;
+  box-shadow: inset 2px 2px 5px $shadow-color,
+  inset -5px -5px 10px $highlight-color;
 }
 
 input:focus {
@@ -100,6 +120,29 @@ input:focus {
   outline: none;
   cursor: pointer;
   border-radius: 25px;
-  box-shadow: 2px 2px 5px #babacc,
-              -5px -5px 10px #ffffff73;
+  box-shadow: 5px 5px 7px $shadow-color,
+              -7px -7px 10px $highlight-color;
+}
+
+.neu-list {
+  margin: 15px 0;
+
+}
+
+.neu-list-item {
+  display: block;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.neu-list-item a {
+  display: block;
+  height: 50px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.neu-list {
+  list-style: none;
+  text-decoration: none;
 }

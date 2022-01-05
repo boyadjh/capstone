@@ -1,0 +1,29 @@
+.post {
+  margin-bottom: 4rem;
+}
+
+.post-title {
+  align-self: start;
+  border-bottom: 1px solid black;
+}
+
+.post-body {
+  font-size: 16px;
+  color: black;
+}
+
+.poster-info {
+  display: flex;
+  align-items: center;
+}
+
+.poster-photo {
+  box-sizing: border-box;
+  border-radius: 50%;
+  height: 100%;
+  filter: grayscale(50%);
+}
+
+.poster-name {
+  font-size: 18px;
+}

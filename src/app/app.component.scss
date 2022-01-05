@@ -31,12 +31,26 @@ header:after {
 }
 
 main {
-  height: calc(100% - 60px);
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
   padding: 30px;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.login-wrapper {
+  height: calc(100% - 60px);
+  display: grid;
+  justify-content: center;
+  align-content: center;
 }
 
 .login, .signup {
@@ -45,6 +59,10 @@ main {
 
 .signup .neu-card-body {
   height: 100%;
+}
+
+.app-groups-view  {
+  background-color: black;
 }
 
 .signup .neu-card-body form{
