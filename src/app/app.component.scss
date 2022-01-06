@@ -4,12 +4,16 @@ a, a:hover, a:visited, a:default {
 }
 
 header {
-  width: 100%;
-  position: relative;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-bottom: 4px;
+  background-color: #ddd8db;
 }
 
 header h1 {
@@ -20,6 +24,7 @@ header:after {
   content:'';
   display: block;
   position: absolute;
+  z-index: 999;
   bottom: -3px;
   width: 100%;
   height: 7px;
@@ -43,31 +48,21 @@ main {
 }
 
 .wrapper {
-  display: flex;
+  width: 100%;
+  padding-left: 150px;
+  z-index: 1;
 }
 
-.login-wrapper {
-  height: calc(100% - 60px);
+.login-wrapper, .signup-wrapper {
+  height: 100%;
   display: grid;
   justify-content: center;
-  align-content: center;
-}
-
-.login, .signup {
-  width: 350px;
-}
-
-.signup .neu-card-body {
-  height: 100%;
-}
-
-.app-groups-view  {
-  background-color: black;
+  align-items: center;
 }
 
 .signup .neu-card-body form{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  //height: 100%;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: space-between;
 }

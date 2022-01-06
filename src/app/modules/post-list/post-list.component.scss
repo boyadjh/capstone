@@ -1,5 +1,6 @@
 .post {
-  margin-bottom: 4rem;
+  margin-bottom: 50px;
+  display: block;
 }
 
 .post-title {
@@ -13,8 +14,16 @@
 }
 
 .poster-info {
+  padding-left: 50px;
+  padding-right: 50px;
   display: flex;
   align-items: center;
+  width: 100%;
+}
+
+.post:nth-child(odd) .poster-info {
+  justify-content: flex-start;
+  flex-flow: row-reverse;
 }
 
 .poster-photo {

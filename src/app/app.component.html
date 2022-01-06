@@ -1,89 +1,70 @@
 <header>
   <a routerLink=""><h1>ASOZI8</h1></a>
 </header>
-<main>
-    <div *ngIf="loggedIn" class="wrapper container col-lg-10">
-      <app-nav class="position-fixed" (logoutClicked)="loggedIn = false"></app-nav>
-      <div style="width: 200px;"></div>
-      <div class="col-lg-10">
+<main *ngIf="loggedIn">
+  <app-nav (logoutClicked)="loggedIn = false"></app-nav>
+    <div class="container-fluid wrapper col-lg-9 col-xl-7 col-md-12">
         <router-outlet></router-outlet>
-      </div>
     </div>
 </main>
-     <div class="login-wrapper" *ngIf="!loggedIn">
-       <div class="neu-card login" *ngIf="!signup">
-         <div class="neu-card-header">
-           <h3>Log In</h3>
-         </div>
-           <div class="neu-card-body">
-             <form (ngSubmit)="login()" [formGroup]="loginForm">
-               <div class="form-field">
-                 <input id="email" class="neu-input" type="text" formControlName="email" placeholder=" ">
-                 <label for="email">Email</label>
-               </div>
-               <div class="form-field">
-                 <input id="password" class="neu-input" type="password" formControlName="password" placeholder=" ">
-                 <label for="password">Password</label>
-               </div>
-               <div class="row justify-content-around">
-                 <button class="neu-btn col-5" type="reset" (click)="signup = true">Sign Up</button>
-                 <button class="neu-btn col-5" type="submit">Log In</button>
-               </div>
-             </form>
-           </div>
+<div class="h-100" *ngIf="!loggedIn">
+   <div class="login-wrapper" *ngIf="!signup">
+     <div class="neu-card login">
+       <div class="neu-card-header">
+         <h3>Log In</h3>
        </div>
-       <div class="neu-card signup" *ngIf="signup">
-         <div class="neu-card-header">
-           <h3>Create an Account</h3>
-         </div>
          <div class="neu-card-body">
-           <form (ngSubmit)="createAccount()" [formGroup]="signupForm">
-             <div class="form-group">
-               <div class="form-field">
-                 <input class="neu-input" id="firstname" type="text" formControlName="firstName" placeholder=" ">
-                 <label for="firstname">First Name</label>
-               </div>
-               <div class="form-field">
-                 <input class="neu-input" id="lastname" type="text" formControlName="lastName" placeholder=" ">
-                 <label for="lastname">Last Name</label>
-               </div>
-             </div>
-             <div>
+           <form (ngSubmit)="login()" [formGroup]="loginForm">
              <div class="form-field">
-               <input id="signupEmail" class="neu-input" type="text" formControlName="email" placeholder=" ">
-               <label for="signupEmail">Email</label>
+               <input id="email" class="neu-input" type="text" formControlName="email" placeholder=" ">
+               <label for="email">Email</label>
              </div>
              <div class="form-field">
-               <input id="signupPassword" class="neu-input" type="password" formControlName="password" placeholder=" ">
-               <label for="signupPassword">Password</label>
-             </div>
+               <input id="password" class="neu-input" type="password" formControlName="password" placeholder=" ">
+               <label for="password">Password</label>
              </div>
              <div class="row justify-content-around">
-               <button class="neu-btn col-5" type="reset" (click)="signup = false">Cancel</button>
-               <button class="neu-btn col-5" type="submit">Sign Up</button>
+               <button class="neu-btn col-5" type="reset" (click)="signup = true">Sign Up</button>
+               <button class="neu-btn col-5" type="submit">Log In</button>
              </div>
            </form>
          </div>
+     </div>
+   </div>
+
+     <div class="signup-wrapper" *ngIf="signup">
+     <div class="neu-card signup">
+       <div class="neu-card-header">
+         <h3>Create an Account</h3>
+       </div>
+       <div class="neu-card-body">
+         <form (ngSubmit)="createAccount()" [formGroup]="signupForm">
+           <div>
+             <div class="form-field">
+               <input class="neu-input" id="firstname" type="text" formControlName="firstName" placeholder=" ">
+               <label for="firstname">First Name</label>
+             </div>
+             <div class="form-field">
+               <input class="neu-input" id="lastname" type="text" formControlName="lastName" placeholder=" ">
+               <label for="lastname">Last Name</label>
+             </div>
+           </div>
+           <div>
+           <div class="form-field">
+             <input id="signupEmail" class="neu-input" type="text" formControlName="email" placeholder=" ">
+             <label for="signupEmail">Email</label>
+           </div>
+           <div class="form-field">
+             <input id="signupPassword" class="neu-input" type="password" formControlName="password" placeholder=" ">
+             <label for="signupPassword">Password</label>
+           </div>
+           </div>
+           <div class="row justify-content-around">
+             <button class="neu-btn col-5" type="reset" (click)="signup = false">Cancel</button>
+             <button class="neu-btn col-5" type="submit">Sign Up</button>
+           </div>
+         </form>
        </div>
      </div>
-
- <!--    <mat-card class="col-3" *ngIf="signup">-->
-<!--      <form (ngSubmit)="createAccount()" [formGroup]="signupForm">-->
-
-<!--        <label for="firstname">First Name:</label>-->
-<!--        <input id="firstname" type="text" formControlName="firstName">-->
-<!--        <br><br>-->
-<!--        <label for="lastname">Last Name:</label>-->
-<!--        <input id="lastname" type="text" formControlName="lastName">-->
-<!--        <br><br>-->
-<!--        <label for="creationEmail">email:</label><br>-->
-<!--        <input id="creationEmail" type="text" formControlName="email">-->
-<!--        <br><br>-->
-<!--        <label for="creationPassword">Password:</label>-->
-<!--        <input id="creationPassword" type="text" formControlName="password">-->
-<!--        <br><br>-->
-<!--        <button type="submit" class="btn btn-success">Create Account</button>&nbsp;<button class="btn btn-danger" (click)="signup = false">Cancel</button>-->
-<!--      </form>-->
-<!--    </mat-card>-->
-
-<!--  </div>-->
+   </div>
+</div>

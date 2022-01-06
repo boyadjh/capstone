@@ -1,13 +1,13 @@
 <div class="mb-5">
-  <div class="white container-fluid p-0">
-    <input type="text" class="w-100" style="font-size:20px;" [(ngModel)]="title">
+  <div class="container-fluid p-0">
+    <input type="text" class="post-editor-title w-100" style="font-size:30px;" [(ngModel)]="title">
     <angular-editor class="" [(ngModel)]="body"></angular-editor>
     <div class="row m-2" *ngIf="!groupId">
-      <type-ahead  class="col-10 border" [suggestions]="userGroups"
+      <type-ahead  class="col-10" [suggestions]="userGroups"
                   [(ngModel)]="groups" [multi]="true"
                   [custom]="false" [complex]="true"
                   idField="_id" nameField="name"></type-ahead>
-      <button class="col-2 btn btn-success" (click)="post()">Post</button>
+      <button class="col-2 neu-btn" (click)="post()">Post</button>
     </div>
   </div>
 

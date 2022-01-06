@@ -1,4 +1,4 @@
-<div *ngFor="let post of posts" class="post mt-3">
+<div *ngFor="let post of posts" class="post">
   <div class="neu-card">
     <div class="neu-card-header mb-2">
       <h3 class="post-title">{{post.title}}</h3>
@@ -6,8 +6,8 @@
     <div class="neu-card-body post-body" [innerHTML]="post.body">
     </div>
   </div>
-  <div class="poster-info mt-3 ml-4">
-    <div class="neu-circle-img">
+  <div class="poster-info mt-3 d-flex">
+    <div class="neu-circle-img ml-2">
       <img class="poster-photo" src="../../../assets/nathan.jpg" alt="profile photo">
     </div>
     <span class="poster-name ml-2">Nathan Fillion</span>

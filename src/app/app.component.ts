@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import {UserService} from './services/user.service';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {ProfileService} from './services/profile.service';
-import {Profile} from "./interfaces/Profile";
+import {Profile} from './interfaces/Profile';
 
 @Component({
   selector: 'app-root',
