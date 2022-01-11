@@ -1,5 +1,10 @@
-<div class="groups-view-wrapper">
-  <h2 class="ml-3 mt-1"><button class="btn btn-success" [routerLink]="['/group/new']" >+</button> Groups</h2>
+<div class="neu-card">
+  <div class="neu-card-header group-list-header">
+    <h2>Groups</h2>
+    <button class="neu-button neu-button-success" [routerLink]="['/group/new']" >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
   <hr class="m-0">
   <ul class="neu-list col-12 mt-3 p-0">
     <li class="neu-list-item" *ngFor="let group of groups">

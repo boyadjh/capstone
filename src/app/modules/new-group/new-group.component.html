@@ -1,15 +1,18 @@
-<mat-card>
-  <mat-card-header class="ml-0"><h4><button class="btn btn-outline-danger" (click)="back()">Back</button> New Group...</h4></mat-card-header>
-  <hr>
-  <mat-card-content>
+<div class="neu-card">
+  <div class="neu-card-header ml-0 new-group-header">
+    <button class="neu-button neu-button-danger neu-button-back" (click)="back()">Back</button>
+    <h4 class="ml-3">New Group...
+    </h4>
+  </div>
+  <div>
     <form (ngSubmit)="makeGroup()" [formGroup]="groupForm">
       <label for="groupName">Name: </label><br>
-      <input id="groupName" type="text" formControlName="name">
+      <input id="groupName" type="text" formControlName="name" placeholder="...">
       <br><br>
       <label for="groupDesc">Description: </label><br>
-      <input id="groupDesc" type="text" formControlName="desc">
+      <input id="groupDesc" type="text" formControlName="desc" placeholder="...">
       <br><br>
-      <button type="submit" class="btn btn-success">Create</button>
+      <button type="submit" class="neu-button neu-button-success float-right" style="width: 80px">Create</button>
     </form>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>

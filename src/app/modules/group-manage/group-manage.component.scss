@@ -1,0 +1,16 @@
+.manage-header {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: start;
+  border-bottom: 1px solid #999;
+  padding: 0 0 10px;
+}
+
+.manage-form {
+  border-bottom: 1px solid #999;
+}
+
+.angular-editor-wrapper {
+  border: 1px solid #999;
+}

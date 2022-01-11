@@ -1,17 +1,20 @@
-<div class="mb-5">
+<div class="mb-5  neu-card">
   <div class="container-fluid p-0">
-    <input type="text" class="post-editor-title w-100" style="font-size:30px;" [(ngModel)]="title">
-    <angular-editor class="" [(ngModel)]="body"></angular-editor>
-    <div class="row m-2" *ngIf="!groupId">
-      <type-ahead  class="col-10" [suggestions]="userGroups"
+    <input type="text" class="post-editor-title w-100"
+           style="font-size:30px;"
+           [(ngModel)]="title"
+           placeholder="Enter a title...">
+    <angular-editor class="" [(ngModel)]="body" [config]="conf"></angular-editor>
+    <div class="row p-2" *ngIf="!groupId">
+      <type-ahead  class="typeahead" [suggestions]="userGroups"
                   [(ngModel)]="groups" [multi]="true"
                   [custom]="false" [complex]="true"
                   idField="_id" nameField="name"></type-ahead>
-      <button class="col-2 neu-btn" (click)="post()">Post</button>
+      <button class="neu-btn post-button" (click)="post()">Post</button>
     </div>
   </div>
 
   <div class="row m-2 justify-content-end" *ngIf="groupId">
-    <button class="btn btn-outline-success" (click)="post()">Post To {{groupName}}</button>
+    <button class="neu-button neu-button-success px-2" style="width: auto;" (click)="post()">Post To {{groupName}}</button>
   </div>
 </div>

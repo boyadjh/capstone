@@ -52,8 +52,8 @@ export class GroupManageComponent implements OnInit {
 
         this.details.get('groupName')?.setValue(this.group.name);
         this.details.get('groupDesc')?.setValue(this.group.desc);
-        this.details.get('groupMembers')?.setValue(this.group.members);
-        this.details.get('groupAdmins')?.setValue(this.group.admins);
+        // this.details.get('groupMembers')?.setValue(this.group.members);
+        // this.details.get('groupAdmins')?.setValue(this.group.admins);
     });
     this.profileService.getProfiles()
       .subscribe(res => {
@@ -75,8 +75,8 @@ export class GroupManageComponent implements OnInit {
       name: this.details.get('groupName')?.value,
       desc: this.details.get('groupDesc')?.value,
       creator: this.group?.creator,
-      members: this.details.get('groupMembers')?.value,
-      admins: this.details.get('groupAdmins')?.value
+      // members: this.details.get('groupMembers')?.value,
+      // admins: this.details.get('groupAdmins')?.value
     };
     console.log(data);
     // this.groupService.update(this.id, data).subscribe(res => {

@@ -2,19 +2,65 @@
 
 .post-editor-title {
   background-color: inherit;
-  border: none;
   padding: 2px;
   padding-left: 10px;
-  box-shadow: inset 3px 3px 5px $shadow-color,
-              inset -3px -3px 5px $highlight-color;
+  border: 1px solid #999;
+  //box-shadow: inset 3px 3px 5px $shadow-color,
+  //            inset -3px -3px 5px $highlight-color;
   margin-bottom: 5px;
 }
 
 .neu-btn {
   border-radius: 20px;
-  height: 50px;
+  font-size: 18px;
+  height: 30px;
   border: none;
   background-color: $background-color;
   box-shadow: 5px 5px 5px $shadow-color,
               -5px -5px 5px $highlight-color;
 }
+
+:host ::ng-deep .angular-editor-toolbar {
+  background-color: unset !important;
+}
+
+:host ::ng-deep .angular-editor-toolbar-set {
+  margin-right: 4px !important;
+}
+
+:host ::ng-deep .angular-editor-button {
+  background-color: unset !important;
+  border: none;
+  border-radius: 5px;
+  margin: 2px;
+  box-shadow: 3px 3px 5px $shadow-color,
+              -3px -3px 5px $highlight-color;
+  transition: background-color .1s;
+}
+
+:host ::ng-deep .angular-editor-button:hover {
+  background-color: rgba(0, 0, 0, .1) !important;
+}
+
+:host ::ng-deep .ae-picker-label, :host ::ng-deep .ae-picker-label:before {
+  background-color: unset !important;
+}
+
+.post-button {
+  flex-grow: 0;
+  width: 100px;
+  margin-left: 20px;
+}
+
+.typeahead {
+  border: 1px solid #999;
+  flex-grow: 1;
+  height: 30px;
+  padding-right: 10px;
+}
+
+:host ::ng-deep .typeahead input {
+  background-color: unset !important;
+}
+
+

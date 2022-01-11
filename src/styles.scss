@@ -20,6 +20,15 @@ html, body {
   color: #071a3e;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+input {
+  background-color: unset;
+  border: 1px solid #999;
+}
+
 .neu-card {
   display: flex;
   flex-flow: column;
@@ -111,6 +120,52 @@ input:focus {
   outline: none;
 }
 
+.neu-button {
+  position: relative;
+  border: none;
+  background-color: inherit;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px $shadow-color,
+  -4px -4px 5px $highlight-color;
+}
+
+.neu-button-success:hover:after {
+  position: absolute;
+  bottom: 8px;
+  left: 15%;
+  content: ' ';
+  width: 70%;
+  height: 3px;
+  background-color: green;
+  animation-name: btn-hover;
+  animation-duration: .25s;
+  animation-timing-function: ease-in-out;
+
+}
+
+.neu-button-danger:hover:after {
+  position: absolute;
+  bottom: 8px;
+  left: 15%;
+  content: ' ';
+  width: 70%;
+  height: 3px;
+  background-color: red;
+  animation-name: btn-hover;
+  animation-duration: .25s;
+  animation-timing-function: ease-in-out;
+}
+
+.neu-button > * {
+  width: 100%;
+}
+
 .login button.neu-btn, .signup button.neu-btn {
   position: relative;
   margin: 15px 0 0 0;
@@ -148,20 +203,29 @@ button.neu-btn:hover:after {
 
 .neu-list {
   margin: 15px 0;
-
 }
 
 .neu-list-item {
-  display: block;
   height: 50px;
-  border: 1px solid black;
+  font-size: 20px;
+  transition: background-color .2s ease-out;
+}
+
+.neu-list-item:not(:last-child) {
+  border-bottom: 1px solid #999;
+}
+
+.neu-list-item:hover {
+ background-color: rgba(0, 0, 0, .1);
 }
 
 .neu-list-item a {
-  display: block;
-  height: 50px;
+  display: grid;
+  align-content: center;
   text-decoration: none;
   color: inherit;
+  margin-left: 20px;
+  height: 50px;
 }
 
 .neu-list {

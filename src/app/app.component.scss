@@ -1,3 +1,5 @@
+@import "../assets/__theme.scss";
+
 a, a:hover, a:visited, a:default {
   text-decoration: none;
   color: black;
@@ -13,7 +15,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding-bottom: 4px;
-  background-color: #ddd8db;
+  background-color: $background-color;
 }
 
 header h1 {
