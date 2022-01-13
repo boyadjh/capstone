@@ -1,17 +1,13 @@
-import mongoose from "mongoose";
-
-const MONGO_URL = 'mongodb://127.0.0.1:27017';
+import mongoose from 'mongoose';
 
 class Connection {
-    constructor() {
-        console.log("Establishing new connection with url", MONGO_URL)
-
-        mongoose.connect(MONGO_URL).then(e => {
-            console.log("Successfully connected to", MONGO_URL)
-        }).catch(err => {
-            console.error(err);
-        });
-    }
+  constructor(url, db) {
+    console.log(`Attempting new connection with database ${db} at ${url}`);
+    const db_url = url + db;
+    mongoose.connect(db_url)
+      .then(res => {console.log(`Successfully connected to ${db_url}`);})
+      .catch(err => {console.error(`Error connecting to ${db_url}\n${err}`)})
+  }
 }
 
-export default new Connection();
+export default Connection;
