@@ -12,10 +12,10 @@ export class GroupsViewComponent implements OnInit {
   constructor(private groupService: GroupService) { }
 
   ngOnInit(): void {
-    this.groupService.getGroups()
-      .subscribe(groups => {
-        console.log(groups);
-        this.groups = groups;
-    });
+    // this.groupService.getGroups()
+    //   .subscribe(groups => {
+    //     console.log(groups);
+    //     this.groups = groups;
+    // });
   }
 }

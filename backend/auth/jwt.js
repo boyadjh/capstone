@@ -6,7 +6,6 @@ export default (passport) => {
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
   opts.secretOrKey = process.env.TOKEN_KEY;
   passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-    console.log(jwt_payload);
     UserModel.findOne({_id: jwt_payload._id}, (err, user) => {
       if(err) {return done(err, false)}
       if(user) {return done(null, user)}

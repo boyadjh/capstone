@@ -74,20 +74,20 @@ export class EditorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userGroups = [];
-    this.groupService.getGroups().subscribe(res => {
-      this.userGroups = res;
-    });
-    this.groupService.getGroupById(this.groupId).subscribe(res => {
-      this.groupName = res.name;
-    });
-    if (this.groupId) {
-      this.groups.push(this.groupId);
-    }
+    // this.userGroups = [];
+    // this.groupService.getGroups().subscribe(res => {
+    //   this.userGroups = res;
+    // });
+    // this.groupService.getGroupById(this.groupId).subscribe(res => {
+    //   this.groupName = res.name;
+    // });
+    // if (this.groupId) {
+    //   this.groups.push(this.groupId);
+    // }
   }
 
   post(): void {
-    const userId = this.user.getId();
+    const userId = this.user.user?._id;
     if (typeof userId === 'string') {
       this.postService.create({
         title: this.title,

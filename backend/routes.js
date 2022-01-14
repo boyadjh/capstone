@@ -11,24 +11,40 @@ export default (app) => {
   userRoutes(app);
   postRoutes(app);
 
-  app.get('/', (req, res) => {
-    res.sendFile(process.cwd()+'/dist/capstone-frontend/index.html');
-  })
 
-  app.post('/login', function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-      user = user.toObject();
-      const token = jwt.sign(
-        {_id: user._id, email: user.email},
-        process.env.TOKEN_KEY,
-        {expiresIn:"7d"}
-      )
-      user.token = token;
-      res.status(201).json(user);
-      next();
-    })(req, res, next);});
 
-  app.post('/signup', (req, res) => {
+  app.post('/api/login', function(req, res, next) {
+    if(req.headers.authorization) {
+      passport.authenticate('jwt', function(err, user, info) {
+        if(!err && user) {
+          let ret = user.toObject();
+          const token = jwt.sign(
+            {_id: user._id, email: user.email},
+            process.env.TOKEN_KEY,
+            {expiresIn:"7d"}
+          )
+          delete ret.password;
+          res.status(200).json({user: ret, token: token});
+        }
+      })(req, res, next);
+    } else {
+      passport.authenticate('local', function(err, user, info) {
+        if(err || !user) {
+          res.status(404).json('Invalid login');
+          return;
+        }
+        user = user.toObject();
+        const token = jwt.sign(
+          {_id: user._id, email: user.email},
+          process.env.TOKEN_KEY,
+          {expiresIn:"7d"}
+        )
+        delete user.password;
+        res.status(201).json({user: user, token: token});
+        next();
+    })(req, res, next);}});
+
+  app.post('/api/signup', (req, res) => {
     UserModel.findOne({email: req.body.email}, (err, user) => {
       if(err || user) {res.send(`User with email ${req.body.email} already exists.`); return;}
       UserModel.create({
@@ -41,4 +57,7 @@ export default (app) => {
     })
   });
 
+  app.get('/*', (req, res) => {
+    res.sendFile(process.cwd()+'/dist/capstone-frontend/index.html');
+  })
 }

@@ -61,16 +61,16 @@ export class GroupService {
       );
   }
 
-  getGroups(): Observable<Group[]> {
-    const query = {
-      members: {
-        $in: [this.user.getId()]
-      }
-    };
-    const params = new HttpParams()
-      .set('query', JSON.stringify(query));
-
-    return this.http.get<any>(this.ENDP, {params})
-      .pipe(map(x => x.data));
-  }
+  // getGroups(): Observable<Group[]> {
+  //   const query = {
+  //     members: {
+  //       $in: [this.user.getId()]
+  //     }
+  //   };
+  //   const params = new HttpParams()
+  //     .set('query', JSON.stringify(query));
+  //
+  //   return this.http.get<any>(this.ENDP, {params})
+  //     .pipe(map(x => x.data));
+  // }
 }

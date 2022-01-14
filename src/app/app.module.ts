@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NewGroupModule} from './modules/new-group/new-group.module';
 import {GroupManageModule} from './modules/group-manage/group-manage.module';
+import {JwtInterceptor} from './services/JwtInterceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import {GroupManageModule} from './modules/group-manage/group-manage.module';
     MatCardModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

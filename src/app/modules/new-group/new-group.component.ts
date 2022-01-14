@@ -28,7 +28,7 @@ export class NewGroupComponent implements OnInit {
   }
 
   makeGroup(): void {
-    const creator = this.user.getId();
+    const creator = this.user.user?._id;
     const data = {
       // @ts-ignore
       name: this.groupForm.get('name').value,

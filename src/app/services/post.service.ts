@@ -3,17 +3,18 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Post } from '../interfaces/Post';
 import {Observable} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
+import {environment as env} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private ENDP = 'http://localhost:3000/api/post';
+  private ENDP = env.API_ENDPOINT + '/users';
   constructor(private http: HttpClient) { }
 
   getPosts(sort?: string): Observable<Post[]> {
     return this.http.get<any>(this.ENDP)
-      .pipe(map(x => x.data));
+      .pipe(map(x => {console.log(x); return x.data; }));
   }
 
   create(post: Post): Observable<Post> {
