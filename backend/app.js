@@ -1,5 +1,6 @@
 import express from 'express';
 import sessions from 'express-session';
+import flash from 'connect-flash';
 import cors from 'cors';
 
 import setupPassport from './auth/passport';

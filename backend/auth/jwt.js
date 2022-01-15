@@ -7,9 +7,9 @@ export default (passport) => {
   opts.secretOrKey = process.env.TOKEN_KEY;
   passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
     UserModel.findOne({_id: jwt_payload._id}, (err, user) => {
-      if(err) {return done(err, false)}
+      if(err) {return done(err, false, {message: 'Problem getting user'})}
       if(user) {return done(null, user)}
-      else {return done(null, false)}
+      else {return done(true, false, {message: 'Invalid token'})}
     })
   }))
 }

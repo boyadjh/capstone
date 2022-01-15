@@ -60,7 +60,15 @@ UserSchema.methods.toJSON = function() {
   return obj;
 }
 
-UserSchema.plugin(uniqueValidator);
+UserSchema.methods.clean = function() {
+  let obj = this.toObject();
+  delete obj.password;
+  delete obj.email;
+  delete obj._id;
+  return obj;
+}
+
+// UserSchema.plugin(uniqueValidator);
 
 const UserModel = mongoose.model('user', UserSchema);
 

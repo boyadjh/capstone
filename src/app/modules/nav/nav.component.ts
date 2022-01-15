@@ -10,11 +10,15 @@ import {Router} from '@angular/router';
 export class NavComponent implements OnInit {
 
   @Output() logoutClicked = new EventEmitter();
+  userFullName = '';
 
   constructor(private user: UserService,
               private route: Router) { }
 
   ngOnInit(): void {
+    if (this.user.user?.fullName) {
+      this.userFullName = this.user.user?.fullName;
+    }
   }
 
   logout(): void {
