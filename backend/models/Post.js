@@ -19,6 +19,11 @@ const PostSchema = new Schema({
   }
 }, {timestamps: true});
 
+PostSchema.methods.clean = function() {
+  let obj = this.toObject();
+  delete obj.groups;
+  return obj;
+}
 
 const PostModel = mongoose.model('post', PostSchema);
 

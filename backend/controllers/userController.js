@@ -49,7 +49,8 @@ export default (app) => {
             else {
               userDoc.firstName = req.body.firstName ? req.body.firstName : userDoc.firstName;
               userDoc.lastName = req.body.lastName ? req.body.lastName : userDoc.lastName;
-              userDoc.save().then(savedDoc => res.send(savedDoc));
+              userDoc.save().then(savedDoc => res.send(savedDoc))
+                .catch(err => res.status(500).send(err));
             }
           }).catch(err => {res.status(500).send(err)})
       }

@@ -24,6 +24,10 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  groups: {
+    type: [String],
+    required: true
+  }
   // groups: {
   //   type: [{
   //     id: {
