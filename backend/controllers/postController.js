@@ -7,8 +7,7 @@ export default (app) => {
     passport.authenticate('jwt', (err, user, info) => {
       if(err || !user) {res.status(500).send(err)}
       else {
-          console.log(user.groups);
-          PostModel.find({groups: {$in: user.groups}})
+          PostModel.find({groups: {$in: user.groups}}).sort({[req.query.sort]: -1})
             .then(postDocs => {
               res.send(postDocs);
             }).catch(err => res.status(500).send(err));
@@ -19,16 +18,16 @@ export default (app) => {
   app.post('/api/posts', (req, res, next) => {
     passport.authenticate('jwt', (err, user, info) => {
       if (err || !user) {res.status(500).send(err)}
-      else if(!user.groups || req.body.groups.length === 0) {
-        console.log(user);
-        res.status(400).send('Invalid group selection')
-      }
-      else if(!user.groups.includes(req.body.groups)) {res.status(409).send('Unauthorized')}
       else {
-        PostModel.create({
-          ...req.body
-        }).then(postDoc => res.send(postDoc))
-          .catch(err => res.status(500).send(err));
+        const groupsRegExp = new RegExp(`(${user.groups.join('|')})+`, 'g');
+        const matches = req.body.groups.join(' ').match(groupsRegExp);
+        if(!matches || matches.length !== req.body.groups.length) {res.status(400).send('Invalid group selection')}
+        else {
+          PostModel.create({
+            ...req.body
+          }).then(postDoc => res.send(postDoc))
+            .catch(err => res.status(500).send(err));
+        }
       }
     })(req, res, next);
   });
@@ -41,13 +40,12 @@ export default (app) => {
         delete req.body._id;
         PostModel.findOne({_id: req.params.postId})
           .then(postDoc => {
-            if(postDoc.poster !== user.id) {res.status(409).send('Unauthorized')}
+            if(postDoc.poster !== user.id) {res.status(401).send('Unauthorized')}
             else if(!postDoc) {res.status(500).send('Problem finding post')}
             else {
               postDoc.title = req.body.title ? req.body.title : postDoc.title;
               postDoc.body = req.body.body ? req.body.body : postDoc.body;
               postDoc.groups = req.body.groups ? req.body.groups : postDoc.groups;
-              console.log(postDoc);
               postDoc.save().then(savedDoc => res.send(savedDoc))
                 .catch(err => res.status(500).send('Error updating post'));
             }

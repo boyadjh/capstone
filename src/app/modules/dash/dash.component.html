@@ -1,5 +1,5 @@
 <div class=" container-fluid">
-<app-editor class="mb-5"></app-editor>
+<app-editor class="mb-5" (postsChange)="loadPosts()"></app-editor>
 <br>
 <app-post-list [posts]="posts"></app-post-list>
 </div>

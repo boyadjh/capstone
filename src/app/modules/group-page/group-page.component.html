@@ -5,7 +5,7 @@
   </div>
   <div class="mb-4">
     <hr class="mt-0 mb-0">
-    <h5 class="ml-3 mr-3">{{group!.desc}}</h5>
+    <h5 class="ml-3 mr-3">{{group!.description}}</h5>
   </div>
   <app-editor [groupId]="group._id!" (postsChange)="refresh()"></app-editor>
   <app-post-list [posts]="posts"></app-post-list>

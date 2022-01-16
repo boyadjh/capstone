@@ -47,6 +47,11 @@ const UserSchema = new Schema({
   // }
 }, {timestamps: true});
 
+UserSchema.pre('validate', function (next) {
+  this.fullName = this.firstName + ' ' + this.lastName;
+  next();
+})
+
 UserSchema.pre('save', async function (next) {
   const user = this;
   this.password = await bcrypt.hash(user.password, 10);
@@ -72,7 +77,7 @@ UserSchema.methods.clean = function() {
   return obj;
 }
 
-// UserSchema.plugin(uniqueValidator);
+UserSchema.plugin(uniqueValidator);
 
 const UserModel = mongoose.model('user', UserSchema);
 

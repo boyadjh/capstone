@@ -8,6 +8,10 @@ import {Post} from '../../interfaces/Post';
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss']
 })
-export class PostListComponent{
+export class PostListComponent implements OnInit{
   @Input() posts: Post[] | undefined;
+
+  ngOnInit(): void {
+
+  }
 }

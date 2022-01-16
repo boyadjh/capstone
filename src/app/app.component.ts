@@ -44,34 +44,27 @@ export class AppComponent implements OnInit{
         this.loggedIn = true;
       }
     });
-
-    // @ts-ignore
-    // this.user.login(this.loginForm.get('email').value, this.loginForm.get('password').value).then(res => {
-    //   this.loggedIn = this.user.isLoggedIn();
-    // }).catch(err => {
-    //   console.log(err);
-    // });
   }
 
-  createAccount(): void {}
-  // createAccount(): void {
-  //
-  //
-  //   const data: Profile = {
-  //     // @ts-ignore
-  //     firstName: this.signupForm.get('firstName').value,
-  //     // @ts-ignore
-  //     lastName: this.signupForm.get('lastName').value,
-  //     // @ts-ignore
-  //     email: this.signupForm.get('email').value,
-  //     // @ts-ignore
-  //     hash: this.signupForm.get('password').value,
-  //
-  //   };
-  //   this.user.createAndLogin(data).then(res => {
-  //     this.loggedIn = this.user.isLoggedIn();
-  //   }).catch(err => {
-  //     console.log('error signing in');
-  //   });
-  // }
+  createAccount(): void {
+    const data = {
+      firstName: this.signupForm.get('firstName')?.value,
+      lastName: this.signupForm.get('lastName')?.value,
+      email: this.signupForm.get('email')?.value,
+      password: this.signupForm.get('password')?.value,
+      groups: []
+    };
+
+    data.firstName[0].toUpperCase();
+    data.lastName[0].toUpperCase();
+
+    this.user.signup(data).subscribe(user => {
+      if (user) {
+        this.loggedIn = true;
+        this.signup = false;
+        this.loginForm.reset();
+        this.signupForm.reset();
+      }
+    });
+  }
 }

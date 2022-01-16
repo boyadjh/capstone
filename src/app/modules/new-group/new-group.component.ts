@@ -30,15 +30,13 @@ export class NewGroupComponent implements OnInit {
   makeGroup(): void {
     const creator = this.user.user?._id;
     const data = {
-      // @ts-ignore
-      name: this.groupForm.get('name').value,
-      // @ts-ignore
-      desc: this.groupForm.get('desc').value,
+      name: this.groupForm.get('name')?.value,
+      description: this.groupForm.get('desc')?.value,
       creator,
       members: [creator],
       admins: [creator]
     };
-    // @ts-ignore
+
     this.group.create(data).subscribe(res => {
       console.log(res);
       this.back();

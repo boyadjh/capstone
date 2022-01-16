@@ -18,11 +18,15 @@ export class DashComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadPosts();
+  }
+
+  loadPosts(): void {
     this.postService.getPosts()
-    .subscribe(posts => {
-      console.log(posts);
-      this.posts = posts;
-    });
+      .subscribe(posts => {
+        this.posts = posts;
+        console.log(this.posts);
+      });
   }
 }
 

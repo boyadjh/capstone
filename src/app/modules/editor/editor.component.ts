@@ -74,10 +74,19 @@ export class EditorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.userGroups = [];
-    // this.groupService.getGroups().subscribe(res => {
-    //   this.userGroups = res;
-    // });
+
+    if (this.groupId) {
+      this.groupService.getGroup(this.groupId).subscribe(group => {
+        this.groupName = group.name;
+        console.log(this.groupId);
+        this.groups = [this.groupId];
+      });
+    } else {
+      this.userGroups = [];
+      this.groupService.getGroups().subscribe(groups => {
+        this.userGroups = groups;
+      });
+    }
     // this.groupService.getGroupById(this.groupId).subscribe(res => {
     //   this.groupName = res.name;
     // });

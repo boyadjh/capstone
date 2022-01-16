@@ -9,27 +9,25 @@ import {environment as env} from '../../environments/environment';
   providedIn: 'root'
 })
 export class PostService {
-  private ENDP = env.API_ENDPOINT + '/users';
+  private ENDP = env.API_ENDPOINT + '/posts';
   constructor(private http: HttpClient) { }
 
-  getPosts(sort?: string): Observable<Post[]> {
-    return this.http.get<any>(this.ENDP)
-      .pipe(map(x => {console.log(x); return x.data; }));
+  getPosts(sort = 'createdAt'): Observable<Post[]> {
+    const params = new HttpParams()
+      .set('sort', sort);
+    return this.http.get<any>(this.ENDP, {params});
   }
 
   create(post: Post): Observable<Post> {
     return this.http.post<any>(this.ENDP, post)
-      .pipe(
-        catchError(_ => {
-          console.log(_.error);
-          return _;
-        }),
-        map(_ => {
-          if (_.item) {
-            return _.item;
+      .pipe(map(postDoc => {
+          if (postDoc) {
+            return postDoc;
           } else {
             throw new Error('Problem creating post');
           }
+        }), catchError(err => {
+          throw err;
         })
       );
   }

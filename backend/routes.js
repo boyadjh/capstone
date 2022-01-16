@@ -27,7 +27,6 @@ export default (app) => {
   app.post('/api/login', function(req, res, next) {
     if(req.headers.authorization) {
       passport.authenticate('jwt', function(err, user, info) {
-        console.log('jwt');
         if(!err && user) {
           let ret = user.toObject();
           const token = jwt.sign(
@@ -59,14 +58,23 @@ export default (app) => {
   app.post('/api/signup', (req, res) => {
     UserModel.findOne({email: req.body.email}, (err, user) => {
       if(err) {res.status(500).send(err)}
-      if(user) {res.send(`User with email ${req.body.email} already exists.`); return;}
-      UserModel.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password
-      }).then(x => {res.send(x)})
-        .catch(err => {res.send(`Error creating user`)});
+      else if(user) {res.send(`User with email ${req.body.email} already exists.`); return;}
+      else {
+        UserModel.create({...req.body})
+          .then(user => {
+            user = user.toObject();
+            const token = jwt.sign(
+              {_id: user._id, email: user.email},
+              process.env.TOKEN_KEY,
+              {expiresIn:"7d"}
+            )
+            delete user.password;
+            res.status(201).json({user: user, token: token});
+        })
+          .catch(err => {
+            res.status(500).send(err)
+          });
+      }
     })
   });
 

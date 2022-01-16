@@ -14,7 +14,7 @@ import {PostService} from '../../services/post.service';
 export class GroupPageComponent implements OnInit {
   group: Group | undefined;
   id: string;
-  posts: Post[];
+  posts: Post[] = [];
   constructor(private groupService: GroupService,
               private postService: PostService,
               private route: ActivatedRoute,
@@ -27,28 +27,19 @@ export class GroupPageComponent implements OnInit {
       this.id = '';
       this.location.back();
     }
-    this.posts = [];
+
   }
 
   ngOnInit(): void {
-    console.log('group page init');
-    this.groupService.getGroupById(this.id)
-      .subscribe(group => {
-        this.group = group;
+    this.groupService.getGroup(this.id).subscribe(group => {
+      this.group = group;
     });
-    this.postService.test();
-    this.postService.getPostsByGroup(this.id)
-      .subscribe(res => {
-        console.log(res);
-        this.posts = res;
-      });
+    this.refresh();
   }
 
   refresh(): void {
-    this.postService.getPostsByGroup(this.id)
-      .subscribe(res => {
-        console.log(res);
-        this.posts = res;
-      });
+    this.groupService.getPosts(this.id).subscribe(posts => {
+      this.posts = posts;
+    });
   }
 }

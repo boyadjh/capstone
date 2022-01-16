@@ -51,21 +51,31 @@ export class UserService {
         throw err;
       }
       ));
-        // if (!res.error) {
-        //   throw new Error(`Problem creating user: ${res.error}`);
-        // }
-        // if (res.user && res.token) {
-        //   localStorage.setItem('token', res.token);
-        //   return res.user;
-        // } else {
-        //   throw new Error('Problem creating user...')
-        // }
-      // }));
   }
 
   logout(): void {
     localStorage.removeItem('token');
     this.user = undefined;
+  }
+
+  signup(data: { firstName: string, lastName: string, email: string, password: string }): Observable<User|void> {
+    return this.http.post<any>(env.API_ENDPOINT + '/signup', data)
+      .pipe(map(res => {
+        console.log(res);
+        if (res.error) {
+          throw new Error('Error creating user: ' + res.error);
+        } else {
+          if (res.token) {
+            localStorage.setItem('token', res.token);
+            this.user = res.user;
+            return res.user;
+          } else {
+            throw new Error('No token received');
+          }
+        }
+      }), catchError(err => {
+        throw err;
+      }));
   }
 
   // createAndLogin(data: Profile): Promise<boolean> {

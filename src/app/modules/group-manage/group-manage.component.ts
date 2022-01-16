@@ -45,25 +45,33 @@ export class GroupManageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.groupService.getGroupById(this.id)
-      .subscribe(res => {
-        console.log(res);
-        this.group = res;
+    this.groupService.getGroup(this.id)
+      .subscribe(group => {
+        console.log(group);
+        this.group = group;
 
         this.details.get('groupName')?.setValue(this.group.name);
-        this.details.get('groupDesc')?.setValue(this.group.desc);
-        // this.details.get('groupMembers')?.setValue(this.group.members);
-        // this.details.get('groupAdmins')?.setValue(this.group.admins);
-    });
-    this.profileService.getProfiles()
-      .subscribe(res => {
-        this.profiles = res.map(x => {
-          return {
-            ...x,
-            fullName: `${x.firstName} ${x.lastName}`
-          };
-        });
+        this.details.get('groupDesc')?.setValue(this.group.description);
       });
+    // this.groupService.getGroupById(this.id)
+    //   .subscribe(res => {
+    //     console.log(res);
+    //     this.group = res;
+    //
+    //     this.details.get('groupName')?.setValue(this.group.name);
+    //     this.details.get('groupDesc')?.setValue(this.group.desc);
+    //     // this.details.get('groupMembers')?.setValue(this.group.members);
+    //     // this.details.get('groupAdmins')?.setValue(this.group.admins);
+    // });
+    // this.profileService.getProfiles()
+    //   .subscribe(res => {
+    //     this.profiles = res.map(x => {
+    //       return {
+    //         ...x,
+    //         fullName: `${x.firstName} ${x.lastName}`
+    //       };
+    //     });
+    //   });
   }
 
   back(): void {
@@ -72,13 +80,17 @@ export class GroupManageComponent implements OnInit {
 
   save(): void {
     const data: Group = {
+      _id: this.group?._id,
       name: this.details.get('groupName')?.value,
-      desc: this.details.get('groupDesc')?.value,
-      creator: this.group?.creator,
+      description: this.details.get('groupDesc')?.value,
       // members: this.details.get('groupMembers')?.value,
       // admins: this.details.get('groupAdmins')?.value
     };
     console.log(data);
+    this.groupService.update(data, this.id).subscribe(group => {
+      console.log(group);
+      this.back();
+    });
     // this.groupService.update(this.id, data).subscribe(res => {
     //   console.log(res);
     //   this.back();
